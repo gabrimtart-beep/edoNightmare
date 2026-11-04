@@ -65,6 +65,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       if: failure()
       with:
+        ack_no_webhook: true
         nodetail: true
         description: |
             [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
@@ -146,6 +147,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       if: failure()
       with:
+        ack_no_webhook: true
         nodetail: true
         description: |
             [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
@@ -206,6 +208,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1.12.0
       if: failure()
       with:
+        ack_no_webhook: true
         nodetail: true
         description: |
             [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
@@ -262,6 +265,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       if: failure()
       with:
+        ack_no_webhook: true
         nodetail: true
         description: |
             [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
@@ -318,6 +322,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       if: failure()
       with:
+        ack_no_webhook: true
         nodetail: true
         description: |
             [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
@@ -374,6 +379,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       if: failure()
       with:
+        ack_no_webhook: true
         nodetail: true
         description: |
             [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
@@ -438,6 +444,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       if: failure()
       with:
+        ack_no_webhook: true
         nodetail: true
         description: |
             [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
@@ -524,6 +531,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       if: failure()
       with:
+        ack_no_webhook: true
         nodetail: true
         description: |
             [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
@@ -582,6 +590,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       if: failure()
       with:
+        ack_no_webhook: true
         nodetail: true
         description: |
             [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
@@ -678,9 +687,10 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       if: failure()
       with:
+        ack_no_webhook: true
         nodetail: true
         description: |
-            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
+            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)
         title: |
 
         color: 0xff0000
@@ -739,6 +749,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       if: failure()
       with:
+        ack_no_webhook: true
         nodetail: true
         description: |
             [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
@@ -756,6 +767,7 @@ jobs:
     - name: Log Success
       uses: sarisia/actions-status-discord@v1
       with:
+        ack_no_webhook: true
         nodetail: true
         description: |
             [[${{ github.event.repository.name }}] Build EDOPro success on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
