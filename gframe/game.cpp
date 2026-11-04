@@ -1917,12 +1917,17 @@ static inline irr::core::matrix4 BuildProjectionMatrix(irr::f32 left, irr::f32 r
 }
 
 irr::core::vector3df getTarget() {
+	if (dInfo.isInDuel && dField.hovered_location != 0) {
+		// Retorna la posición 3D dinámica de la casilla o carta enfocada por el cursor
+		return dField.GetCardOrZoneVector(dField.hovered_location, dField.hovered_sequence);
+	}
 	return { FIELD_X, 0.f, 0.f };
 }
 irr::core::vector3df getPosition() {
 	if(gGameConfig->topdown_view)
 		return { FIELD_X, 0.f, FIELD_Z * 1.4f };
-	return { FIELD_X, FIELD_Y, FIELD_Z };
+	// Perspectiva diagonal inclinada y cercana al estilo Yu-Gi-Oh! DS (Spirit Caller / Nightmare Troubadour)
+	return { FIELD_X, FIELD_Y * 0.75f, FIELD_Z * 0.7f };
 }
 irr::core::vector3df getUpVector() {
 	if(gGameConfig->topdown_view)
@@ -1996,6 +2001,14 @@ bool Game::MainLoop() {
 	}
 	while(!restart && device->run()) {
 		DispatchQueue();
+		
+		// Enfoque dinámico de cámara estilo Nintendo DS (Lerp / Interpolación suave hacia la casilla o carta seleccionada)
+		if(dInfo.isInDuel && camera) {
+			irr::core::vector3df targetPos = getTarget();
+			irr::core::vector3df currentTarget = camera->getTarget();
+			irr::core::vector3df smoothTarget = currentTarget.getInterpolated(targetPos, 0.12f);
+			camera->setTarget(smoothTarget);
+		}
 		if(suspend) {
 			epro::this_thread::sleep_for(std::chrono::milliseconds(1));
 			continue;
