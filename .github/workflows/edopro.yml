@@ -29,8 +29,8 @@ jobs:
       uses: microsoft/setup-msbuild@v3
     - uses: actions/checkout@v1
       with:
-        ref: ${{ github.head_ref }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
+        ref: ${{ github.head_ref || github.ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         fetch-depth: 1
         submodules: recursive
     - name: Install winxp components
@@ -99,8 +99,8 @@ jobs:
         echo "VCPKG_CACHE_ZIP_URL=$DEPENDENCIES_BASE_URL/${{ matrix.package_name }}" >> $GITHUB_ENV
     - uses: actions/checkout@v1
       with:
-        ref: ${{ github.head_ref }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
+        ref: ${{ github.head_ref || github.ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         fetch-depth: 1
         submodules: recursive
     - name: Install mingw lite toolchain
@@ -156,8 +156,8 @@ jobs:
         sudo apt install -y g++ build-essential curl p7zip-full p7zip-rar zip git
     - uses: actions/checkout@v1
       with:
-        ref: ${{ github.head_ref }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
+        ref: ${{ github.head_ref || github.ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         fetch-depth: 1
         submodules: recursive
     - name: Install premake
@@ -196,8 +196,8 @@ jobs:
         sudo apt remove libsqlite3-dev
     - uses: actions/checkout@v1
       with:
-        ref: ${{ github.head_ref }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
+        ref: ${{ github.head_ref || github.ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         fetch-depth: 1
         submodules: recursive
     - name: Install premake
@@ -239,8 +239,8 @@ jobs:
         sudo apt remove libsqlite3-dev
     - uses: actions/checkout@v1
       with:
-        ref: ${{ github.head_ref }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
+        ref: ${{ github.head_ref || github.ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         fetch-depth: 1
         submodules: recursive
     - name: Install premake
@@ -282,8 +282,8 @@ jobs:
         sudo apt remove libsqlite3-dev
     - uses: actions/checkout@v1
       with:
-        ref: ${{ github.head_ref }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
+        ref: ${{ github.head_ref || github.ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         fetch-depth: 1
         submodules: recursive
     - name: Install premake
@@ -332,8 +332,8 @@ jobs:
         sudo apt install -y g++ build-essential curl p7zip-full p7zip-rar zip git gcc-aarch64-linux-gnu g++-aarch64-linux-gnu binutils-aarch64-linux-gnu
     - uses: actions/checkout@v1
       with:
-        ref: ${{ github.head_ref }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
+        ref: ${{ github.head_ref || github.ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         fetch-depth: 1
         submodules: recursive
     - name: Install premake
@@ -398,8 +398,8 @@ jobs:
         echo "VCPKG_CACHE_7Z_URL=$DEPENDENCIES_BASE_URL/$ARCHIVE_NAME" >> $GITHUB_ENV
     - uses: actions/checkout@v1
       with:
-        ref: ${{ github.head_ref }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
+        ref: ${{ github.head_ref || github.ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         fetch-depth: 1
         submodules: recursive
     - name: Download cctools
@@ -444,8 +444,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       with:
-        ref: ${{ github.head_ref }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
+        ref: ${{ github.head_ref || github.ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         fetch-depth: 1
     - name: Download lipo binary
       run: |
@@ -522,8 +522,8 @@ jobs:
         echo "VCPKG_CACHE_7Z_URL=$DEPENDENCIES_BASE_URL/${{ matrix.package_name }}" >> $GITHUB_ENV
     - uses: actions/checkout@v1
       with:
-        ref: ${{ github.head_ref }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
+        ref: ${{ github.head_ref || github.ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         fetch-depth: 1
         submodules: recursive
     - name: Download cctools
@@ -569,8 +569,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       with:
-        ref: ${{ github.head_ref }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
+        ref: ${{ github.head_ref || github.ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         fetch-depth: 1
     - name: Download osx artifacts
       uses: actions/download-artifact@v7
