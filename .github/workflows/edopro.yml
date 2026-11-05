@@ -27,7 +27,7 @@ jobs:
         echo "VCPKG_CACHE_ZIP_URL=$DEPENDENCIES_BASE_URL/installed_x86-windows-static.zip" >> $GITHUB_ENV
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v3
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref || github.ref }}
         repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
@@ -43,7 +43,6 @@ jobs:
         )
         [string]$workloadArgs = $componentsToAdd | ForEach-Object {" --add " +  $_}
         $Arguments = ('/c', "vs_installer.exe", 'modify', '--installPath', "`"$InstallPath`"",$workloadArgs, '--quiet', '--norestart', '--nocache')
-        # should be run twice
         $process = Start-Process -FilePath cmd.exe -ArgumentList $Arguments -Wait -PassThru -WindowStyle Hidden
     - name: Install premake
       shell: bash
@@ -97,7 +96,7 @@ jobs:
       shell: bash
       run: |
         echo "VCPKG_CACHE_ZIP_URL=$DEPENDENCIES_BASE_URL/${{ matrix.package_name }}" >> $GITHUB_ENV
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref || github.ref }}
         repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
@@ -124,7 +123,7 @@ jobs:
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       shell: bash
       run: ./travis/deploy.sh
-    - uses: actions/upload-artifact@v6
+    - uses: actions/upload-artifact@v4
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       with:
         name: ${{ matrix.deploy_name }}
@@ -154,7 +153,7 @@ jobs:
         apt install sudo
         sudo apt remove libsqlite3-dev
         sudo apt install -y g++ build-essential curl p7zip-full p7zip-rar zip git
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref || github.ref }}
         repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
@@ -194,7 +193,7 @@ jobs:
       shell: bash
       run: |
         sudo apt remove libsqlite3-dev
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref || github.ref }}
         repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
@@ -237,7 +236,7 @@ jobs:
       shell: bash
       run: |
         sudo apt remove libsqlite3-dev
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref || github.ref }}
         repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
@@ -280,7 +279,7 @@ jobs:
       shell: bash
       run: |
         sudo apt remove libsqlite3-dev
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref || github.ref }}
         repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
@@ -330,7 +329,7 @@ jobs:
         apt install sudo
         sudo apt remove libsqlite3-dev
         sudo apt install -y g++ build-essential curl p7zip-full p7zip-rar zip git gcc-aarch64-linux-gnu g++-aarch64-linux-gnu binutils-aarch64-linux-gnu
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref || github.ref }}
         repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
@@ -396,7 +395,7 @@ jobs:
       shell: bash
       run: |
         echo "VCPKG_CACHE_7Z_URL=$DEPENDENCIES_BASE_URL/$ARCHIVE_NAME" >> $GITHUB_ENV
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref || github.ref }}
         repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
@@ -424,7 +423,7 @@ jobs:
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       shell: bash
       run: ./travis/deploy.sh
-    - uses: actions/upload-artifact@v6
+    - uses: actions/upload-artifact@v4
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       with:
         name: ${{ format('osx{0}{1}-cctools', matrix.deploy_prefix, matrix.stdc) }}
@@ -442,7 +441,7 @@ jobs:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     needs: [ Mac-os-cctools ]
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref || github.ref }}
         repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
@@ -452,7 +451,7 @@ jobs:
         wget https://github.com/edo9300/cctools-build/releases/download/preview/lipo
         chmod +x lipo
     - name: Download osx artifacts
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v4
     - name: Merge binaries
       shell: bash
       run: |
@@ -469,7 +468,7 @@ jobs:
       shell: bash
       run: ./travis/deploy.sh
     - name: Delete artifacts
-      uses: geekyeggo/delete-artifact@v6
+      uses: geekyeggo/delete-artifact@v5
       with:
         name: |
             ${{ format('osx-aarch64{0}-cctools', matrix.stdc) }}
@@ -520,7 +519,7 @@ jobs:
       shell: bash
       run: |
         echo "VCPKG_CACHE_7Z_URL=$DEPENDENCIES_BASE_URL/${{ matrix.package_name }}" >> $GITHUB_ENV
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref || github.ref }}
         repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
@@ -552,7 +551,7 @@ jobs:
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       shell: bash
       run: ./travis/deploy.sh
-    - uses: actions/upload-artifact@v6
+    - uses: actions/upload-artifact@v4
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       with:
         name: ${{ matrix.deploy_name }}
@@ -567,13 +566,13 @@ jobs:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     needs: [ Ios-cctools ]
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref || github.ref }}
         repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         fetch-depth: 1
     - name: Download osx artifacts
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v4
     - name: Download ldid binary
       run: |
         cd /tmp
@@ -600,7 +599,7 @@ jobs:
       shell: bash
       run: ./travis/deploy.sh
     - name: Delete artifacts
-      uses: geekyeggo/delete-artifact@v6
+      uses: geekyeggo/delete-artifact@v5
       with:
         name: |
             ios-cctools
