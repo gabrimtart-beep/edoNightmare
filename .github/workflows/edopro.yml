@@ -61,20 +61,6 @@ jobs:
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       shell: bash
       run: ./travis/deploy.sh
-    - name: Log Failure
-      uses: sarisia/actions-status-discord@v1
-      if: failure()
-      with:
-        ack_no_webhook: true
-        nodetail: true
-        description: |
-            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
-        title: |
-
-        color: 0xff0000
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        username: Github
 
   Windows-mingw:
     runs-on: ubuntu-latest
@@ -143,20 +129,6 @@ jobs:
       with:
         name: ${{ matrix.deploy_name }}
         path: deploy/
-    - name: Log Failure
-      uses: sarisia/actions-status-discord@v1
-      if: failure()
-      with:
-        ack_no_webhook: true
-        nodetail: true
-        description: |
-            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
-        title: |
-
-        color: 0xff0000
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        username: Github
 
   Linux-gcc-7-5-0:
     runs-on: ubuntu-latest
@@ -204,20 +176,6 @@ jobs:
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       shell: bash
       run: ./travis/deploy.sh
-    - name: Log Failure
-      uses: sarisia/actions-status-discord@v1.12.0
-      if: failure()
-      with:
-        ack_no_webhook: true
-        nodetail: true
-        description: |
-            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
-        title: |
-
-        color: 0xff0000
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        username: Github
 
   Linux-gcc-10-3-0:
     runs-on: ubuntu-22.04
@@ -261,20 +219,6 @@ jobs:
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       shell: bash
       run: ./travis/deploy.sh
-    - name: Log Failure
-      uses: sarisia/actions-status-discord@v1
-      if: failure()
-      with:
-        ack_no_webhook: true
-        nodetail: true
-        description: |
-            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
-        title: |
-
-        color: 0xff0000
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        username: Github
 
   Linux-gcc-11:
     runs-on: ubuntu-22.04
@@ -318,20 +262,6 @@ jobs:
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       shell: bash
       run: ./travis/deploy.sh
-    - name: Log Failure
-      uses: sarisia/actions-status-discord@v1
-      if: failure()
-      with:
-        ack_no_webhook: true
-        nodetail: true
-        description: |
-            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
-        title: |
-
-        color: 0xff0000
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        username: Github
 
   Linux-gcc-14:
     runs-on: ubuntu-24.04
@@ -375,20 +305,6 @@ jobs:
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       shell: bash
       run: ./travis/deploy.sh
-    - name: Log Failure
-      uses: sarisia/actions-status-discord@v1
-      if: failure()
-      with:
-        ack_no_webhook: true
-        nodetail: true
-        description: |
-            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
-        title: |
-
-        color: 0xff0000
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        username: Github
 
   Linux-aarch64-gcc-7-5-0:
     runs-on: ubuntu-latest
@@ -440,20 +356,6 @@ jobs:
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       shell: bash
       run: ./travis/deploy.sh
-    - name: Log Failure
-      uses: sarisia/actions-status-discord@v1
-      if: failure()
-      with:
-        ack_no_webhook: true
-        nodetail: true
-        description: |
-            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
-        title: |
-
-        color: 0xff0000
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        username: Github
 
   Mac-os-cctools:
     strategy:
@@ -527,20 +429,6 @@ jobs:
       with:
         name: ${{ format('osx{0}{1}-cctools', matrix.deploy_prefix, matrix.stdc) }}
         path: ${{ format('bin/{0}/release/ygoprodll.app', matrix.triplet_prefix) }}
-    - name: Log Failure
-      uses: sarisia/actions-status-discord@v1
-      if: failure()
-      with:
-        ack_no_webhook: true
-        nodetail: true
-        description: |
-            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
-        title: |
-
-        color: 0xff0000
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        username: Github
 
   Mac-os-universal-cctools:
     runs-on: ubuntu-slim
@@ -586,20 +474,6 @@ jobs:
         name: |
             ${{ format('osx-aarch64{0}-cctools', matrix.stdc) }}
             ${{ format('osx{0}-cctools', matrix.stdc) }}
-    - name: Log Failure
-      uses: sarisia/actions-status-discord@v1
-      if: failure()
-      with:
-        ack_no_webhook: true
-        nodetail: true
-        description: |
-            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
-        title: |
-
-        color: 0xff0000
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        username: Github
 
   Ios-cctools:
     strategy:
@@ -683,20 +557,6 @@ jobs:
       with:
         name: ${{ matrix.deploy_name }}
         path: ${{ format('bin/{0}/release/ygoprodll.app', matrix.premake_arch) }}
-    - name: Log Failure
-      uses: sarisia/actions-status-discord@v1
-      if: failure()
-      with:
-        ack_no_webhook: true
-        nodetail: true
-        description: |
-            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)
-        title: |
-
-        color: 0xff0000
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        username: Github
 
   Ios-universal-cctools:
     runs-on: ubuntu-slim
@@ -745,35 +605,3 @@ jobs:
         name: |
             ios-cctools
             ios-armv7-cctools
-    - name: Log Failure
-      uses: sarisia/actions-status-discord@v1
-      if: failure()
-      with:
-        ack_no_webhook: true
-        nodetail: true
-        description: |
-            [[${{ github.event.repository.name }}] ${{ github.job }} failed on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
-        title: |
-
-        color: 0xff0000
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        username: Github
-
-  Notify-success:
-    runs-on: ubuntu-slim
-    needs: [ Windows, Linux-gcc-7-5-0, Mac-os-universal-cctools, Windows-mingw ]
-    steps:
-    - name: Log Success
-      uses: sarisia/actions-status-discord@v1
-      with:
-        ack_no_webhook: true
-        nodetail: true
-        description: |
-            [[${{ github.event.repository.name }}] Build EDOPro success on ${{ github.ref }}](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
-        title: |
-
-        color: 0x0f9826
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        username: Github
