@@ -583,6 +583,9 @@ public:
 	void ResizeCardinfoWindow(bool keep_ratio);
 
 	bool HasFocus(irr::gui::EGUI_ELEMENT_TYPE type) const;
+    irr::core::vector3df getTarget();
+	irr::core::vector3df getPosition();
+	irr::core::vector3df getUpVector();
 
 	void RefreshUICoreVersion();
 	std::wstring GetLocalizedExpectedCore();
