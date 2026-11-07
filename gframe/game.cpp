@@ -1917,11 +1917,10 @@ static inline irr::core::matrix4 BuildProjectionMatrix(irr::f32 left, irr::f32 r
 }
 
 irr::core::vector3df getTarget() {
-	if (dInfo.isInDuel && dField.hovered_location != 0) {
-		// Retorna la posición 3D dinámica de la casilla o carta enfocada por el cursor
-		return dField.GetCardOrZoneVector(dField.hovered_location, dField.hovered_sequence);
-	}
-	return { FIELD_X, 0.f, 0.f };
+    if (mainGame->dInfo.isInDuel && mainGame->dField.hovered_location != 0) {
+        return mainGame->dField.GetCardOrZoneVector(mainGame->dField.hovered_location, mainGame->dField.hovered_sequence);
+    }
+    return { FIELD_X, 0.f, 0.f };
 }
 irr::core::vector3df getPosition() {
 	if(gGameConfig->topdown_view)
