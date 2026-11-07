@@ -1916,19 +1916,18 @@ static inline irr::core::matrix4 BuildProjectionMatrix(irr::f32 left, irr::f32 r
 	return mProjection;
 }
 
-irr::core::vector3df getTarget() {
-    if (mainGame->dInfo.isInDuel && mainGame->dField.hovered_location != 0) {
-        return mainGame->dField.GetCardOrZoneVector(mainGame->dField.hovered_location, mainGame->dField.hovered_sequence);
+irr::core::vector3df Game::getTarget() {
+    if (dInfo.isInDuel && dField.hovered_location != 0) {
+        return dField.GetCardOrZoneVector(dField.hovered_location, dField.hovered_sequence);
     }
     return { FIELD_X, 0.f, 0.f };
 }
-irr::core::vector3df getPosition() {
+irr::core::vector3df Game::getPosition() {
 	if(gGameConfig->topdown_view)
 		return { FIELD_X, 0.f, FIELD_Z * 1.4f };
-	// Perspectiva diagonal inclinada y cercana al estilo Yu-Gi-Oh! DS (Spirit Caller / Nightmare Troubadour)
 	return { FIELD_X, FIELD_Y * 0.75f, FIELD_Z * 0.7f };
 }
-irr::core::vector3df getUpVector() {
+irr::core::vector3df Game::getUpVector() {
 	if(gGameConfig->topdown_view)
 		return { 0.f, -1.f, 0.f };
 	return { 0.f, 0.f, 1.f };
