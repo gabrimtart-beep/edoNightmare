@@ -1916,9 +1916,14 @@ static inline irr::core::matrix4 BuildProjectionMatrix(irr::f32 left, irr::f32 r
 	return mProjection;
 }
 
-irr::core::vector3df Game::getTarget() {
+irr::core::vector3df ygo::Game::getTarget() {
     if (dInfo.isInDuel && dField.hovered_location != 0) {
-        return dField.GetCardOrZoneVector(dField.hovered_location, dField.hovered_sequence);
+        ClientCard* pcard = dField.GetCard(dField.hovered_controler, dField.hovered_location, dField.hovered_sequence);
+        irr::core::vector3df pos;
+        if (pcard) {
+            dField.GetCardDrawCoordinates(pcard, &pos, nullptr);
+            return pos;
+        }
     }
     return { FIELD_X, 0.f, 0.f };
 }
